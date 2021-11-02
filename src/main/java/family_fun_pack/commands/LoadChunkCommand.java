@@ -32,9 +32,9 @@ import family_fun_pack.network.PacketListener;
 @SideOnly(Side.CLIENT)
 public class LoadChunkCommand extends Command implements PacketListener {
 
-  private static final int WINDOWS_SIZE = 9;
-  private static final int BURST_SIZE = 3;
-  private static final int RE_SEND_TIME = 2000;
+  private static final int WINDOWS_SIZE = 11;
+  private static final int BURST_SIZE = 5;
+  private static final int RE_SEND_TIME = 951;
 
   private Map<BlockPos, Long> window;
   private ReadWriteLock window_lock;
