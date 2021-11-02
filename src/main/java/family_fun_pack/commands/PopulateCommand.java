@@ -2,7 +2,7 @@ package family_fun_pack.commands;
 
 import net.minecraft.network.EnumPacketDirection;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
+import net.minecraft.network.play.client.CPacketPlayerDigging;
 import net.minecraft.network.play.server.SPacketBlockChange;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -26,7 +26,7 @@ import family_fun_pack.network.PacketListener;
 @SideOnly(Side.CLIENT)
 public class PopulateCommand extends Command implements PacketListener {
 
-  private static final int RETRY_TIME = 1500;
+  private static final int RETRY_TIME = 999;
 
   private int x, z, wx, wz;
   private int index = 0;
@@ -158,7 +158,7 @@ public class PopulateCommand extends Command implements PacketListener {
     this.window_lock.writeLock().lock();
     this.completed = 0;
     for(int i = 0; i < 4; i += 2) {
-      FamilyFunPack.getNetworkHandler().sendPacket(new CPacketPlayerTryUseItemOnBlock(this.window[i], EnumFacing.WEST, EnumHand.MAIN_HAND, 0f, 0f, 0f));
+      FamilyFunPack.getNetworkHandler().sendPacket(new CPacketPlayerDigging(this.window[i], EnumFacing.WEST, EnumHand.MAIN_HAND, 0f, 0f, 0f));
     }
     this.window_lock.writeLock().unlock();
   }
